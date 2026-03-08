@@ -23,26 +23,17 @@ def save_pickle(obj, path):
         pickle.dump(obj, f)
 
 def main():
-
-    # Load dataset
     documents = load_dataset()
-    
-    # Preprocess
     print("Preprocessing documents...")
     clean_docs = preprocess_documents(documents)
-    
-    # Generate embeddings
     print("Generating embeddings...")
     embedder = Embedder()
     embeddings = embedder.encode_documents(clean_docs)
     print("Embedding shape:", embeddings.shape)
-    
-    # Save processed data
     print("Saving processed documents...")
     save_pickle(clean_docs, DOCUMENT_FILE)
     print("Saving embeddings...")
     save_pickle(embeddings, EMBEDDING_FILE)
     print("Embedding pipeline complete.")
-
 if __name__ == "__main__":
     main()

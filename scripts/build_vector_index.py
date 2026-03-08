@@ -18,8 +18,6 @@ def load_embeddings():
 def build_faiss_index(embeddings):
     dimension = embeddings.shape[1]
     print("Creating FAISS index...")
-    
-    # IndexFlatL2 uses L2 distance for similarity search
     index = faiss.IndexFlatL2(dimension)
     print("Adding vectors to index...")
     index.add(embeddings)
